@@ -1,39 +1,39 @@
 #include<iostream>
 #include<string>
 #include <map>
-//auto¹Ø¼ü×Ö²¢²»ÊÇÍòÄÜµÄ£¬ÔÚÒÔÏÂÕâĞ©³¡¾°ÖĞÊÇ²»ÄÜÍê³ÉÀàĞÍÍÆµ¼µÄ£º
+//autoå…³é”®å­—å¹¶ä¸æ˜¯ä¸‡èƒ½çš„ï¼Œåœ¨ä»¥ä¸‹è¿™äº›åœºæ™¯ä¸­æ˜¯ä¸èƒ½å®Œæˆç±»å‹æ¨å¯¼çš„ï¼š
 //int func(auto a, auto b)	// error
 //{
 //	cout << "a: " << a << ", b: " << b << endl;
 //}
 
 
-//²»ÄÜÓÃÓÚÀàµÄ·Ç¾²Ì¬³ÉÔ±±äÁ¿µÄ³õÊ¼»¯
+//ä¸èƒ½ç”¨äºç±»çš„éé™æ€æˆå‘˜å˜é‡çš„åˆå§‹åŒ–
 class Test
 {
 	//auto v1 = 0;                    // error
-	//static auto v2 = 0;             // error,ÀàµÄ¾²Ì¬·Ç³£Á¿³ÉÔ±²»ÔÊĞíÔÚÀàÄÚ²¿Ö±½Ó³õÊ¼»¯
+	//static auto v2 = 0;             // error,ç±»çš„é™æ€éå¸¸é‡æˆå‘˜ä¸å…è®¸åœ¨ç±»å†…éƒ¨ç›´æ¥åˆå§‹åŒ–
 	static const auto v3 = 10;      // ok
 };
 
-//²»ÄÜÊ¹ÓÃauto¹Ø¼ü×Ö¶¨ÒåÊı×é
+//ä¸èƒ½ä½¿ç”¨autoå…³é”®å­—å®šä¹‰æ•°ç»„
 int func()
 {
-	int array[] = { 1,2,3,4,5 };  // ¶¨ÒåÊı×é
-	auto t1 = array;            // ok, t1±»ÍÆµ¼Îª int* ÀàĞÍ
-	//auto t2[] = array;          // error, autoÎŞ·¨¶¨ÒåÊı×é
-	//auto t3[] = { 1,2,3,4,5 };;   // error, autoÎŞ·¨¶¨ÒåÊı×é
+	int array[] = { 1,2,3,4,5 };  // å®šä¹‰æ•°ç»„
+	auto t1 = array;            // ok, t1è¢«æ¨å¯¼ä¸º int* ç±»å‹
+	//auto t2[] = array;          // error, autoæ— æ³•å®šä¹‰æ•°ç»„
+	//auto t3[] = { 1,2,3,4,5 };;   // error, autoæ— æ³•å®šä¹‰æ•°ç»„
 	return 0;
 }
 
-//ÎŞ·¨Ê¹ÓÃautoÍÆµ¼³öÄ£°å²ÎÊı
+//æ— æ³•ä½¿ç”¨autoæ¨å¯¼å‡ºæ¨¡æ¿å‚æ•°
 template <typename T>
 struct Test2 {};
 
 int func2()
 {
 	Test2<double> t;
-	//Test<auto> t1 = t;           // error, ÎŞ·¨ÍÆµ¼³öÄ£°åÀàĞÍ
+	//Test<auto> t1 = t;           // error, æ— æ³•æ¨å¯¼å‡ºæ¨¡æ¿ç±»å‹
 	return 0;
 }
 
@@ -72,32 +72,32 @@ void func5(void)
 
 int main()
 {
-	auto x = 3.14;      // x ÊÇ¸¡µãĞÍ double
-	auto y = 520;       // y ÊÇÕûĞÎ int
-	auto z = 'a';       // z ÊÇ×Ö·ûĞÍ char
-	//auto nb;            // error£¬±äÁ¿±ØĞëÒª³õÊ¼»¯
-	//auto double nbl;    // Óï·¨´íÎó, ²»ÄÜĞŞ¸ÄÊı¾İÀàĞÍ   
+	auto x = 3.14;      // x æ˜¯æµ®ç‚¹å‹ double
+	auto y = 520;       // y æ˜¯æ•´å½¢ int
+	auto z = 'a';       // z æ˜¯å­—ç¬¦å‹ char
+	//auto nb;            // errorï¼Œå˜é‡å¿…é¡»è¦åˆå§‹åŒ–
+	//auto double nbl;    // è¯­æ³•é”™è¯¯, ä¸èƒ½ä¿®æ”¹æ•°æ®ç±»å‹   
 
 	int temp = 110;
-	auto *a = &temp;      //±äÁ¿aµÄÊı¾İÀàĞÍÎª int* £¬Òò´Ëauto¹Ø¼ü×Ö±»ÍÆµ¼Îª intÀàĞÍ   
-	auto b = &temp;		  //±äÁ¿bµÄÊı¾İÀàĞÍÎª int* £¬Òò´Ëauto¹Ø¼ü×Ö±»ÍÆµ¼Îª int* ÀàĞÍ
-	auto& c = temp;		  //±äÁ¿cµÄÊı¾İÀàĞÍÎª int& £¬Òò´Ëauto¹Ø¼ü×Ö±»ÍÆµ¼Îª intÀàĞÍ
-	auto d = temp;        //±äÁ¿dµÄÊı¾İÀàĞÍÎª int£¬Òò´Ëauto¹Ø¼ü×Ö±»ÍÆµ¼Îª intÀàĞÍ
+	auto *a = &temp;      //å˜é‡açš„æ•°æ®ç±»å‹ä¸º int* ï¼Œå› æ­¤autoå…³é”®å­—è¢«æ¨å¯¼ä¸º intç±»å‹   
+	auto b = &temp;		  //å˜é‡bçš„æ•°æ®ç±»å‹ä¸º int* ï¼Œå› æ­¤autoå…³é”®å­—è¢«æ¨å¯¼ä¸º int* ç±»å‹
+	auto& c = temp;		  //å˜é‡cçš„æ•°æ®ç±»å‹ä¸º int& ï¼Œå› æ­¤autoå…³é”®å­—è¢«æ¨å¯¼ä¸º intç±»å‹
+	auto d = temp;        //å˜é‡dçš„æ•°æ®ç±»å‹ä¸º intï¼Œå› æ­¤autoå…³é”®å­—è¢«æ¨å¯¼ä¸º intç±»å‹
 
 
 	int tmp = 250;          
-	const auto a1 = tmp;    //±äÁ¿a1µÄÊı¾İÀàĞÍÎª const int£¬Òò´Ëauto¹Ø¼ü×Ö±»ÍÆµ¼Îª intÀàĞÍ
+	const auto a1 = tmp;    //å˜é‡a1çš„æ•°æ®ç±»å‹ä¸º const intï¼Œå› æ­¤autoå…³é”®å­—è¢«æ¨å¯¼ä¸º intç±»å‹
 
 
-	auto a2 = a1;            //±äÁ¿a2µÄÊı¾İÀàĞÍÎª int£¬µ«ÊÇa2Ã»ÓĞÉùÃ÷ÎªÖ¸Õë»òÒıÓÃÒò´Ë constÊôĞÔ±»È¥µô, auto±»ÍÆµ¼Îª int 
+	auto a2 = a1;            //å˜é‡a2çš„æ•°æ®ç±»å‹ä¸º intï¼Œä½†æ˜¯a2æ²¡æœ‰å£°æ˜ä¸ºæŒ‡é’ˆæˆ–å¼•ç”¨å› æ­¤ constå±æ€§è¢«å»æ‰, autoè¢«æ¨å¯¼ä¸º int 
 
-	const auto& a3 = tmp;   //±äÁ¿a3µÄÊı¾İÀàĞÍÎª const int& £¬a3±»ÉùÃ÷ÎªÒıÓÃÒò´Ë constÊôĞÔ±»±£Áô£¬auto¹Ø¼ü×Ö±»ÍÆµ¼Îª intÀàĞÍ
+	const auto& a3 = tmp;   //å˜é‡a3çš„æ•°æ®ç±»å‹ä¸º const int& ï¼Œa3è¢«å£°æ˜ä¸ºå¼•ç”¨å› æ­¤ constå±æ€§è¢«ä¿ç•™ï¼Œautoå…³é”®å­—è¢«æ¨å¯¼ä¸º intç±»å‹
 
 	
-	auto& a4 = a3;          //±äÁ¿a4µÄÊı¾İÀàĞÍÎª const int& £¬a4±»ÉùÃ÷ÎªÒıÓÃÒò´Ë constÊôĞÔ±»±£Áô£¬auto¹Ø¼ü×Ö±»ÍÆµ¼Îª const intÀàĞÍ
+	auto& a4 = a3;          //å˜é‡a4çš„æ•°æ®ç±»å‹ä¸º const int& ï¼Œa4è¢«å£°æ˜ä¸ºå¼•ç”¨å› æ­¤ constå±æ€§è¢«ä¿ç•™ï¼Œautoå…³é”®å­—è¢«æ¨å¯¼ä¸º const intç±»å‹
 
 
-	//±éÀú
+	//éå†
 	std::map<int, std::string>person;
 	for (auto it = person.begin(); it != person.end(); it++)
 	{

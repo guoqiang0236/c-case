@@ -3,25 +3,25 @@
 #include <regex>
 
 int main() {
-	// Ê¾Àı1: ÆÕÍ¨×Ö·û´® vs Ô­Ê¼×Ö·û´® - Windows Â·¾¶
+	// ç¤ºä¾‹1: æ™®é€šå­—ç¬¦ä¸² vs åŸå§‹å­—ç¬¦ä¸² - Windows è·¯å¾„
 	std::string str1;
 	str1 = "C:\\workspace\\sonoquest_yiru\\sonoquest_oem\\sq_common\\dcmtk3.6.9\\etc\\dcmqrprf.cfg";
-	std::cout << "Ê¾Àı1 - ÆÕÍ¨×Ö·û´®:\n" << str1 << std::endl << std::endl;
+	std::cout << "ç¤ºä¾‹1 - æ™®é€šå­—ç¬¦ä¸²:\n" << str1 << std::endl << std::endl;
 
 	std::string str2;
 	str2 = R"(C:\workspace\sonoquest_yiru\sonoquest_oem\sq_common\dcmtk3.6.9\etc\dcmqrprf.cfg)";
-	std::cout << "Ê¾Àı1 - Ô­Ê¼×Ö·û´®:\n" << str2 << std::endl << std::endl;
+	std::cout << "ç¤ºä¾‹1 - åŸå§‹å­—ç¬¦ä¸²:\n" << str2 << std::endl << std::endl;
 
-	// Ê¾Àı2: ¶àĞĞ×Ö·û´® - JSON ¸ñÊ½
+	// ç¤ºä¾‹2: å¤šè¡Œå­—ç¬¦ä¸² - JSON æ ¼å¼
 	std::string json = R"({
-    "name": "ÕÅÈı",
+    "name": "å¼ ä¸‰",
     "age": 25,
     "path": "C:\Users\Documents\file.txt",
-    "description": "ÕâÊÇÒ»¶Î\"°üº¬ÒıºÅ\"µÄÎÄ±¾"
+    "description": "è¿™æ˜¯ä¸€æ®µ\"åŒ…å«å¼•å·\"çš„æ–‡æœ¬"
 })";
-	std::cout << "Ê¾Àı2 - JSON ×Ö·û´®:\n" << json << std::endl << std::endl;
+	std::cout << "ç¤ºä¾‹2 - JSON å­—ç¬¦ä¸²:\n" << json << std::endl << std::endl;
 
-	// Ê¾Àı3: SQL ²éÑ¯Óï¾ä
+	// ç¤ºä¾‹3: SQL æŸ¥è¯¢è¯­å¥
 	std::string sql = R"(
 SELECT * FROM users 
 WHERE name = 'Tom' 
@@ -29,46 +29,46 @@ WHERE name = 'Tom'
   AND path LIKE 'C:\data\%'
 ORDER BY id DESC;
 )";
-	std::cout << "Ê¾Àı3 - SQL ²éÑ¯:\n" << sql << std::endl << std::endl;
+	std::cout << "ç¤ºä¾‹3 - SQL æŸ¥è¯¢:\n" << sql << std::endl << std::endl;
 
-	// Ê¾Àı4: ÕıÔò±í´ïÊ½£¨±ÜÃâË«ÖØ×ªÒå£©
-	std::string phonePattern = R"(\d{3}-\d{4}-\d{4})";  // Æ¥Åäµç»°ºÅÂë
+	// ç¤ºä¾‹4: æ­£åˆ™è¡¨è¾¾å¼ï¼ˆé¿å…åŒé‡è½¬ä¹‰ï¼‰
+	std::string phonePattern = R"(\d{3}-\d{4}-\d{4})";  // åŒ¹é…ç”µè¯å·ç 
 	std::string emailPattern = R"([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})";
-	std::cout << "Ê¾Àı4 - ÕıÔò±í´ïÊ½Ä£Ê½:\nµç»°: " << phonePattern
-		<< "\nÓÊÏä: " << emailPattern << std::endl << std::endl;
+	std::cout << "ç¤ºä¾‹4 - æ­£åˆ™è¡¨è¾¾å¼æ¨¡å¼:\nç”µè¯: " << phonePattern
+		<< "\né‚®ç®±: " << emailPattern << std::endl << std::endl;
 
-	// Ê¾Àı5: HTML ´úÂë
+	// ç¤ºä¾‹5: HTML ä»£ç 
 	std::string html = R"(
 <!DOCTYPE html>
 <html>
 <head>
-    <title>²âÊÔÒ³Ãæ</title>
+    <title>æµ‹è¯•é¡µé¢</title>
 </head>
 <body>
-    <h1>»¶Ó­Ê¹ÓÃÔ­Ê¼×Ö·û´®</h1>
-    <p>Â·¾¶: C:\Program Files\App\config.xml</p>
+    <h1>æ¬¢è¿ä½¿ç”¨åŸå§‹å­—ç¬¦ä¸²</h1>
+    <p>è·¯å¾„: C:\Program Files\App\config.xml</p>
 </body>
 </html>
 )";
-	std::cout << "Ê¾Àı5 - HTML ´úÂë:\n" << html << std::endl << std::endl;
+	std::cout << "ç¤ºä¾‹5 - HTML ä»£ç :\n" << html << std::endl << std::endl;
 
-	// Ê¾Àı6: °üº¬ÌØÊâ×Ö·ûµÄ×Ö·û´®
-	std::string special = R"(ÌØÊâ×Ö·û²âÊÔ:
-ÖÆ±í·û:	ÕâÀïÓĞtab
-ÒıºÅ: "Ë«ÒıºÅ" ºÍ 'µ¥ÒıºÅ'
-·´Ğ±¸Ü: \ \\ \\\
-»»ĞĞºÍ»Ø³µ¶¼±£Áô
+	// ç¤ºä¾‹6: åŒ…å«ç‰¹æ®Šå­—ç¬¦çš„å­—ç¬¦ä¸²
+	std::string special = R"(ç‰¹æ®Šå­—ç¬¦æµ‹è¯•:
+åˆ¶è¡¨ç¬¦:	è¿™é‡Œæœ‰tab
+å¼•å·: "åŒå¼•å·" å’Œ 'å•å¼•å·'
+åæ–œæ : \ \\ \\\
+æ¢è¡Œå’Œå›è½¦éƒ½ä¿ç•™
 )";
-	std::cout << "Ê¾Àı6 - ÌØÊâ×Ö·û:\n" << special << std::endl << std::endl;
+	std::cout << "ç¤ºä¾‹6 - ç‰¹æ®Šå­—ç¬¦:\n" << special << std::endl << std::endl;
 
-	// Ê¾Àı7: ×Ô¶¨Òå·Ö¸ô·û - µ±×Ö·û´®ÖĞ°üº¬ )" Ê±Ê¹ÓÃ
+	// ç¤ºä¾‹7: è‡ªå®šä¹‰åˆ†éš”ç¬¦ - å½“å­—ç¬¦ä¸²ä¸­åŒ…å« )" æ—¶ä½¿ç”¨
 	std::string withDelimiter = R"delim(
-Õâ¸ö×Ö·û´®ÖĞ¿ÉÒÔ°üº¬ )" ÕâÑùµÄ×éºÏ
-¶ø²»»áÌáÇ°½áÊø×Ö·û´®£¬ÒòÎªÊ¹ÓÃÁË×Ô¶¨Òå·Ö¸ô·û "delim"
+è¿™ä¸ªå­—ç¬¦ä¸²ä¸­å¯ä»¥åŒ…å« )" è¿™æ ·çš„ç»„åˆ
+è€Œä¸ä¼šæå‰ç»“æŸå­—ç¬¦ä¸²ï¼Œå› ä¸ºä½¿ç”¨äº†è‡ªå®šä¹‰åˆ†éš”ç¬¦ "delim"
 )delim";
-	std::cout << "Ê¾Àı7 - ×Ô¶¨Òå·Ö¸ô·û:\n" << withDelimiter << std::endl << std::endl;
+	std::cout << "ç¤ºä¾‹7 - è‡ªå®šä¹‰åˆ†éš”ç¬¦:\n" << withDelimiter << std::endl << std::endl;
 
-	// Ê¾Àı8: XML ÅäÖÃÎÄ¼ş
+	// ç¤ºä¾‹8: XML é…ç½®æ–‡ä»¶
 	std::string xml = R"(<?xml version="1.0" encoding="UTF-8"?>
 <config>
     <database>
@@ -77,22 +77,22 @@ ORDER BY id DESC;
     </database>
     <settings name="app" value="test"/>
 </config>)";
-	std::cout << "Ê¾Àı8 - XML ÅäÖÃ:\n" << xml << std::endl << std::endl;
+	std::cout << "ç¤ºä¾‹8 - XML é…ç½®:\n" << xml << std::endl << std::endl;
 
-	// Ê¾Àı9: C++ ´úÂëÆ¬¶Î£¨×÷Îª×Ö·û´®£©
+	// ç¤ºä¾‹9: C++ ä»£ç ç‰‡æ®µï¼ˆä½œä¸ºå­—ç¬¦ä¸²ï¼‰
 	std::string cppCode = R"(
 void processFile(const std::string& path) {
-    std::cout << "´¦ÀíÎÄ¼ş: " << path << std::endl;
-    // ¸ü¶à´úÂë...
+    std::cout << "å¤„ç†æ–‡ä»¶: " << path << std::endl;
+    // æ›´å¤šä»£ç ...
 }
 )";
-	std::cout << "Ê¾Àı9 - C++ ´úÂë×Ö·û´®:\n" << cppCode << std::endl << std::endl;
+	std::cout << "ç¤ºä¾‹9 - C++ ä»£ç å­—ç¬¦ä¸²:\n" << cppCode << std::endl << std::endl;
 
-	// Ê¾Àı10: ÍøÂçÂ·¾¶ºÍ URL
+	// ç¤ºä¾‹10: ç½‘ç»œè·¯å¾„å’Œ URL
 	std::string networkPath = R"(\\server\share\folder\file.txt)";
 	std::string url = R"(https://example.com/api/v1/users?filter={"age":">18"}&sort=name)";
-	std::cout << "Ê¾Àı10 - ÍøÂçÂ·¾¶ºÍ URL:\n"
-		<< "ÍøÂçÂ·¾¶: " << networkPath << "\n"
+	std::cout << "ç¤ºä¾‹10 - ç½‘ç»œè·¯å¾„å’Œ URL:\n"
+		<< "ç½‘ç»œè·¯å¾„: " << networkPath << "\n"
 		<< "URL: " << url << std::endl << std::endl;
 
 	return 0;

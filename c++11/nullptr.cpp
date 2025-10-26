@@ -1,81 +1,81 @@
 #include <iostream>
 #include <cstddef>
 
-// ÑİÊ¾º¯ÊıÖØÔØµÄÇø±ğ
+// æ¼”ç¤ºå‡½æ•°é‡è½½çš„åŒºåˆ«
 void func(int value) {
-    std::cout << "µ÷ÓÃ func(int)£¬²ÎÊıÖµ: " << value << std::endl;
+    std::cout << "è°ƒç”¨ func(int)ï¼Œå‚æ•°å€¼: " << value << std::endl;
 }
 
 void func(char* ptr) {
-    std::cout << "µ÷ÓÃ func(char*)£¬Ö¸ÕëµØÖ·: " << static_cast<void*>(ptr) << std::endl;
+    std::cout << "è°ƒç”¨ func(char*)ï¼ŒæŒ‡é’ˆåœ°å€: " << static_cast<void*>(ptr) << std::endl;
 }
 
-// ÑİÊ¾Ä£°åÀàĞÍÍÆµ¼
+// æ¼”ç¤ºæ¨¡æ¿ç±»å‹æ¨å¯¼
 template<typename T>
 void templateFunc(T param) {
-    std::cout << "Ä£°å²ÎÊıÀàĞÍ: " << typeid(T).name() << std::endl;
+    std::cout << "æ¨¡æ¿å‚æ•°ç±»å‹: " << typeid(T).name() << std::endl;
 }
 
-// ÑİÊ¾Ö¸Õë³õÊ¼»¯
+// æ¼”ç¤ºæŒ‡é’ˆåˆå§‹åŒ–
 class MyClass {
 public:
     void display() {
-        std::cout << "MyClass ¶ÔÏó" << std::endl;
+        std::cout << "MyClass å¯¹è±¡" << std::endl;
     }
 };
 
 int main() {
-    std::cout << "=== 1. º¯ÊıÖØÔØ³¡¾° ===" << std::endl;
+    std::cout << "=== 1. å‡½æ•°é‡è½½åœºæ™¯ ===" << std::endl;
 
-    // NULL µÄÎÊÌâ£º¿ÉÄÜ±»½âÊÍÎªÕûÊı 0
-    func(NULL);  // ¿ÉÄÜµ÷ÓÃ func(int) - ÓĞÆçÒå£¡
+    // NULL çš„é—®é¢˜ï¼šå¯èƒ½è¢«è§£é‡Šä¸ºæ•´æ•° 0
+    func(NULL);  // å¯èƒ½è°ƒç”¨ func(int) - æœ‰æ­§ä¹‰ï¼
 
-    // nullptr ÕıÈ·£ºÃ÷È·±íÊ¾¿ÕÖ¸Õë
-    func(nullptr);  // µ÷ÓÃ func(char*)
+    // nullptr æ­£ç¡®ï¼šæ˜ç¡®è¡¨ç¤ºç©ºæŒ‡é’ˆ
+    func(nullptr);  // è°ƒç”¨ func(char*)
 
-    std::cout << "\n=== 2. Ä£°åÀàĞÍÍÆµ¼ ===" << std::endl;
+    std::cout << "\n=== 2. æ¨¡æ¿ç±»å‹æ¨å¯¼ ===" << std::endl;
 
-    templateFunc(NULL);     // ÍÆµ¼ÎªÕûÊıÀàĞÍ
-    templateFunc(nullptr);  // ÍÆµ¼Îª std::nullptr_t
+    templateFunc(NULL);     // æ¨å¯¼ä¸ºæ•´æ•°ç±»å‹
+    templateFunc(nullptr);  // æ¨å¯¼ä¸º std::nullptr_t
 
-    std::cout << "\n=== 3. Ö¸Õë³õÊ¼»¯ ===" << std::endl;
+    std::cout << "\n=== 3. æŒ‡é’ˆåˆå§‹åŒ– ===" << std::endl;
 
-    // ´«Í³·½Ê½
+    // ä¼ ç»Ÿæ–¹å¼
     int* ptr1 = NULL;
     MyClass* obj1 = NULL;
 
-    // C++11 ÍÆ¼ö·½Ê½
+    // C++11 æ¨èæ–¹å¼
     int* ptr2 = nullptr;
     MyClass* obj2 = nullptr;
 
     std::cout << "ptr1 (NULL): " << ptr1 << std::endl;
     std::cout << "ptr2 (nullptr): " << ptr2 << std::endl;
 
-    std::cout << "\n=== 4. Ìõ¼şÅĞ¶Ï ===" << std::endl;
+    std::cout << "\n=== 4. æ¡ä»¶åˆ¤æ–­ ===" << std::endl;
 
     if (ptr2 == nullptr) {
-        std::cout << "ptr2 ÊÇ¿ÕÖ¸Õë" << std::endl;
+        std::cout << "ptr2 æ˜¯ç©ºæŒ‡é’ˆ" << std::endl;
     }
 
-    // ·ÖÅäÄÚ´æºóµÄ±È½Ï
+    // åˆ†é…å†…å­˜åçš„æ¯”è¾ƒ
     ptr2 = new int(42);
     if (ptr2 != nullptr) {
-        std::cout << "ptr2 Ö¸ÏòÓĞĞ§ÄÚ´æ£¬ÖµÎª: " << *ptr2 << std::endl;
+        std::cout << "ptr2 æŒ‡å‘æœ‰æ•ˆå†…å­˜ï¼Œå€¼ä¸º: " << *ptr2 << std::endl;
         delete ptr2;
     }
 
-    std::cout << "\n=== 5. nullptr µÄÀàĞÍ ===" << std::endl;
+    std::cout << "\n=== 5. nullptr çš„ç±»å‹ ===" << std::endl;
 
-    // nullptr ÓĞ×Ô¼ºµÄÀàĞÍ
+    // nullptr æœ‰è‡ªå·±çš„ç±»å‹
     auto null_ptr = nullptr;
-    std::cout << "nullptr µÄÀàĞÍ: " << typeid(null_ptr).name() << std::endl;
+    std::cout << "nullptr çš„ç±»å‹: " << typeid(null_ptr).name() << std::endl;
 
-    // ¿ÉÒÔ×ª»»ÎªÈÎºÎÖ¸ÕëÀàĞÍ
+    // å¯ä»¥è½¬æ¢ä¸ºä»»ä½•æŒ‡é’ˆç±»å‹
     int* int_ptr = nullptr;
     char* char_ptr = nullptr;
     MyClass* class_ptr = nullptr;
 
-    std::cout << "nullptr ¿ÉÒÔ¸³Öµ¸øÈÎºÎÖ¸ÕëÀàĞÍ" << std::endl;
+    std::cout << "nullptr å¯ä»¥èµ‹å€¼ç»™ä»»ä½•æŒ‡é’ˆç±»å‹" << std::endl;
 
     return 0;
 }

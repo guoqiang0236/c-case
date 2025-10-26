@@ -1,21 +1,21 @@
 #include <iostream>
 #include <array>
-// 1. constexpr ±äÁ¿£º±ØĞëÔÚ±àÒëÊ±³õÊ¼»¯
-constexpr int MAX_SIZE = 100;  // ×ÖÃæÖµ³£Á¿
+// 1. constexpr å˜é‡ï¼šå¿…é¡»åœ¨ç¼–è¯‘æ—¶åˆå§‹åŒ–
+constexpr int MAX_SIZE = 100;  // å­—é¢å€¼å¸¸é‡
 
 
 void func(const int num)
 {
     const int count = 24;
-    //int array[num];            // error£¬numÊÇÒ»¸öÖ»¶Á±äÁ¿£¬²»ÊÇ³£Á¿
-    int array1[count];         // ok£¬countÊÇÒ»¸ö³£Á¿
+    //int array[num];            // errorï¼Œnumæ˜¯ä¸€ä¸ªåªè¯»å˜é‡ï¼Œä¸æ˜¯å¸¸é‡
+    int array1[count];         // okï¼Œcountæ˜¯ä¸€ä¸ªå¸¸é‡
 
     int a1 = 520;
     int a2 = 250;
     const int& b = a1;
     //b = a2;                         // error
     a1 = 1314;
-    std::cout << "b: " << b << std::endl;     // Êä³ö½á¹ûÎª1314
+    std::cout << "b: " << b << std::endl;     // è¾“å‡ºç»“æœä¸º1314
 }
 
 //constexpr struct constTest
@@ -30,14 +30,14 @@ struct Test
     int num;
 };
 
-// error£¬º¯Êıfunc1()Ã»ÓĞ·µ»ØÖµ,²»ÊÇ³£Á¿±í´ïÊ½º¯Êı
+// errorï¼Œå‡½æ•°func1()æ²¡æœ‰è¿”å›å€¼,ä¸æ˜¯å¸¸é‡è¡¨è¾¾å¼å‡½æ•°
 constexpr void func1()
 {
     int a = 100;
     std::cout << "a: " << a << std::endl;
 }
 
-// error£¬º¯Êıfunc2()·µ»ØÖµ²»ÊÇ³£Á¿±í´ïÊ½,²»ÊÇ³£Á¿±í´ïÊ½º¯Êı
+// errorï¼Œå‡½æ•°func2()è¿”å›å€¼ä¸æ˜¯å¸¸é‡è¡¨è¾¾å¼,ä¸æ˜¯å¸¸é‡è¡¨è¾¾å¼å‡½æ•°
 constexpr int func2()
 {
     int a = 100;
