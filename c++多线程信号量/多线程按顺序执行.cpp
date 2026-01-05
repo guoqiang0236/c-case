@@ -3,7 +3,7 @@
 #include <mutex>
 #include <condition_variable>
 
-// C++14 ĞÅºÅÁ¿ÊµÏÖ
+// C++14 ä¿¡å·é‡å®ç°
 class Semaphore {
 public:
     Semaphore(int count = 0) : count_(count) {}
@@ -26,7 +26,7 @@ private:
     int count_;
 };
 
-// ¶¨ÒåËÄ¸öĞÅºÅÁ¿£¬·Ö±ğ¿ØÖÆa¡¢b¡¢c¡¢dÏß³Ì
+// å®šä¹‰å››ä¸ªä¿¡å·é‡ï¼Œåˆ†åˆ«æ§åˆ¶aã€bã€cã€dçº¿ç¨‹
 Semaphore sem_a(1), sem_b(0), sem_c(0), sem_d(0);
 
 void print_a() {
